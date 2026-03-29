@@ -43,3 +43,14 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
+
+STAGE_NAME = "Model Evaluation Stage"
+try:   
+    logger.info(f">>>>> stage {STAGE_NAME} started <<<<<")
+    from mlProject.pipeline.stage_05_model_evaluation import ModelEvaluationTrainingPipeline
+    obj = ModelEvaluationTrainingPipeline()
+    obj.main()
+    logger.info(f">>>>> stage {STAGE_NAME} completed <<<<<")
+except Exception as e:
+    logger.exception(e)
+    raise e
