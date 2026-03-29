@@ -4,6 +4,7 @@ print("Working!")
 from mlProject.entity.config_entity import DataIngestionConfig
 from mlProject.entity.config_entity import DataValidationConfig
 from mlProject.entity.config_entity import DataTransformationConfig
+from mlProject.entity.config_entity import ModelTrainerConfig
 class ConfigurationManager:
     def __init__(
         self,
@@ -56,3 +57,21 @@ class ConfigurationManager:
         )
 
         return data_transformation_config 
+
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+            config = self.config.model_trainer
+            params = self.params.ElasticNet
+            schema = self.schema.TARGET_COLUMN
+
+            create_directories([config.root_dir])
+            model_trainer_config = ModelTrainerConfig(
+                root_dir=Path(config.root_dir),
+                train_data_path=Path(config.train_data_path),
+                test_data_path=Path(config.test_data_path),
+                model_name=config.model_name,
+                alpha=params.alpha,
+                l1_ratio=params.l1_ratio,
+                target_column=schema.name
+            )
+
+            return model_trainer_config
