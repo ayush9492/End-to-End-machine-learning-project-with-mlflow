@@ -164,7 +164,7 @@ export MLFLOW_TRACKING_PASSWORD=b37174b788eb480a05a34451a642c135e6893057
 MLflow
 
  - Its Production Grade
- - Trace all of your expriements
+ - Trace all of your experiments
  - Logging & tagging your model
 
 
